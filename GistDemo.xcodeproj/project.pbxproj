@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1814BBAB20FC774800C79D25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBAA20FC774800C79D25 /* AppDelegate.swift */; };
-		1814BBAD20FC774800C79D25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBAC20FC774800C79D25 /* ViewController.swift */; };
 		1814BBB020FC774800C79D25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1814BBAE20FC774800C79D25 /* Main.storyboard */; };
 		1814BBB220FC775000C79D25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1814BBB120FC775000C79D25 /* Assets.xcassets */; };
 		1814BBB520FC775000C79D25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1814BBB320FC775000C79D25 /* LaunchScreen.storyboard */; };
 		1814BBC020FC775000C79D25 /* GistDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBBF20FC775000C79D25 /* GistDemoTests.swift */; };
 		1814BBCB20FC775100C79D25 /* GistDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBCA20FC775100C79D25 /* GistDemoUITests.swift */; };
+		1814BBDB20FC7AA300C79D25 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBDA20FC7AA300C79D25 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		1814BBA720FC774800C79D25 /* GistDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GistDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1814BBAA20FC774800C79D25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1814BBAC20FC774800C79D25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1814BBAF20FC774800C79D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1814BBB120FC775000C79D25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1814BBB420FC775000C79D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		1814BBC620FC775100C79D25 /* GistDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GistDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1814BBCA20FC775100C79D25 /* GistDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistDemoUITests.swift; sourceTree = "<group>"; };
 		1814BBCC20FC775100C79D25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1814BBDA20FC7AA300C79D25 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +97,8 @@
 		1814BBA920FC774800C79D25 /* GistDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1814BBD820FC7A8900C79D25 /* Controller */,
 				1814BBAA20FC774800C79D25 /* AppDelegate.swift */,
-				1814BBAC20FC774800C79D25 /* ViewController.swift */,
 				1814BBAE20FC774800C79D25 /* Main.storyboard */,
 				1814BBB120FC775000C79D25 /* Assets.xcassets */,
 				1814BBB320FC775000C79D25 /* LaunchScreen.storyboard */,
@@ -123,6 +123,22 @@
 				1814BBCC20FC775100C79D25 /* Info.plist */,
 			);
 			path = GistDemoUITests;
+			sourceTree = "<group>";
+		};
+		1814BBD820FC7A8900C79D25 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1814BBD920FC7A8900C79D25 /* Login */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1814BBD920FC7A8900C79D25 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1814BBDA20FC7AA300C79D25 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1814BBAD20FC774800C79D25 /* ViewController.swift in Sources */,
+				1814BBDB20FC7AA300C79D25 /* LoginViewController.swift in Sources */,
 				1814BBAB20FC774800C79D25 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
