@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  GistDemo
-//
-//  Created by Apple on 16/07/18.
-//  Copyright © 2018 Apple. All rights reserved.
-//
 
 import Foundation
 import AlamofireOauth2
@@ -19,3 +12,36 @@ let gistSettings = Oauth2Settings(
     scope: "gist"
 )
 
+class Constant {
+    class func baseUrl() -> String {
+        return "https://api.github.com/gists/"
+    }
+    
+    class func alertTitle() -> String {
+        return "GistDemo"
+    }
+    
+    class func processing() -> String {
+        return "Processing.."
+    }
+    
+    class func commentPlaceholder() -> String {
+        return "Type your comment here"
+    }
+}
+
+struct AlertMessage {
+    static let EnableCameraPermission = "Enable camera device access from youe iPhone settings"
+    static let NoCameraAvailable = "Oops..Camera not available!"
+    static let NoQRCodeDetected = "No QR code is detected"
+    static let InValidQRCode = "Gist not found. Please try valid QR Code"
+    static let SomethingWentWrong = "Something went wrong. Please try again later."
+}
+
+struct ErrorMessage {
+    static let NotFound = "Not Found"
+}
+
+struct AlertTitle {
+    static let Ok = "Ok"
+}

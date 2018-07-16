@@ -72,5 +72,76 @@
             </objects>
             <point key="canvasLocation" x="138.75" y="129.92957746478874"/>
         </scene>
+        <!--Code Scanner View Controller-->
+        <scene sceneID="Rla-an-qO0">
+            <objects>
+                <viewController storyboardIdentifier="QRCodeScannerViewController" id="FcI-GY-f4A" customClass="QRCodeScannerViewController" customModule="GistDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d4J-3A-3HT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLf-4j-AkS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khu-tP-SrO">
+                                        <rect key="frame" x="10" y="40" width="30" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="n3p-K5-Tw0"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="backarrow">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backClicked:" destination="FcI-GY-f4A" eventType="touchUpInside" id="HhV-Ht-bDn"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan QRCode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0B5-oC-tTx">
+                                        <rect key="frame" x="132.5" y="41" width="110" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizableKey" value="ticket_scanner"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14117647059999999" green="0.16078431369999999" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0B5-oC-tTx" firstAttribute="centerX" secondItem="QLf-4j-AkS" secondAttribute="centerX" id="2jJ-Yp-xKK"/>
+                                    <constraint firstAttribute="bottom" secondItem="Khu-tP-SrO" secondAttribute="bottom" constant="8" id="SoT-ht-Ood"/>
+                                    <constraint firstItem="Khu-tP-SrO" firstAttribute="leading" secondItem="QLf-4j-AkS" secondAttribute="leading" constant="10" id="VMC-Nz-2rz"/>
+                                    <constraint firstAttribute="height" constant="70" id="eVf-Uh-pLl"/>
+                                    <constraint firstItem="0B5-oC-tTx" firstAttribute="centerY" secondItem="Khu-tP-SrO" secondAttribute="centerY" id="eef-SO-4id"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-5D-vDn">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QLf-4j-AkS" firstAttribute="leading" secondItem="mCa-97-JGY" secondAttribute="leading" id="Ouc-kR-Zih"/>
+                            <constraint firstItem="GwK-5D-vDn" firstAttribute="bottom" secondItem="mCa-97-JGY" secondAttribute="bottom" id="YHm-b3-21y"/>
+                            <constraint firstItem="GwK-5D-vDn" firstAttribute="trailing" secondItem="mCa-97-JGY" secondAttribute="trailing" id="fqs-8q-W0P"/>
+                            <constraint firstItem="GwK-5D-vDn" firstAttribute="leading" secondItem="mCa-97-JGY" secondAttribute="leading" id="gdz-Nj-uhA"/>
+                            <constraint firstItem="GwK-5D-vDn" firstAttribute="top" secondItem="QLf-4j-AkS" secondAttribute="bottom" id="nfx-mf-n6I"/>
+                            <constraint firstItem="QLf-4j-AkS" firstAttribute="trailing" secondItem="mCa-97-JGY" secondAttribute="trailing" id="viE-pU-HTh"/>
+                            <constraint firstItem="QLf-4j-AkS" firstAttribute="top" secondItem="d4J-3A-3HT" secondAttribute="top" id="xdq-US-xKT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mCa-97-JGY"/>
+                    </view>
+                    <connections>
+                        <outlet property="scannerView" destination="GwK-5D-vDn" id="Udg-04-5gp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yf4-78-R2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1968.75" y="132.04225352112675"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="backarrow" width="10" height="18"/>
+    </resources>
 </document>

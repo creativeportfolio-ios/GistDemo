@@ -1,10 +1,3 @@
-//
-//  LoginViewController.swift
-//  GistDemo
-//
-//  Created by Apple on 16/07/18.
-//  Copyright © 2018 Apple. All rights reserved.
-//
 
 import UIKit
 import AlamofireOauth2
@@ -21,7 +14,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginClicked(_ sender: Any) {
         UsingOauth2(gistSettings, performWithToken: { token in
-            print(token)
+            GistDemoHttpRouter.OAuthToken = token
+            let qrCodeScannerViewController = self.storyboard?.instantiateViewController(withIdentifier: "QRCodeScannerViewController") as! QRCodeScannerViewController
+            self.navigationController?.pushViewController(qrCodeScannerViewController, animated: true)
         }, errorHandler: {
             Oauth2ClearTokensFromKeychain(gistSettings)
             let storage = HTTPCookieStorage.shared
