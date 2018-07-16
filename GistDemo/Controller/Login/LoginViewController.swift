@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireOauth2
 
 class LoginViewController: UIViewController {
 
@@ -19,6 +20,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginClicked(_ sender: Any) {
+        UsingOauth2(gistSettings, performWithToken: { token in
+            print(token)
+        }, errorHandler: {
+            Oauth2ClearTokensFromKeychain(gistSettings)
+            let storage = HTTPCookieStorage.shared
+            storage.cookies?.forEach() { storage.deleteCookie($0) }
+        })
     }
 
 }
