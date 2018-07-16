@@ -36,6 +36,9 @@ struct AlertMessage {
     static let NoQRCodeDetected = "No QR code is detected"
     static let InValidQRCode = "Gist not found. Please try valid QR Code"
     static let SomethingWentWrong = "Something went wrong. Please try again later."
+    static let NoCommnet = "No any comments"
+    static let AddCommentAlert = "Please enter comment..."
+    static let CommentSuccessMessage = "Your comment is posted."
 }
 
 struct ErrorMessage {

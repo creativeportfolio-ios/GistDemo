@@ -107,7 +107,6 @@ struct NetworkManager {
         let request = Alamofire.request(urlRequest)
             .validate()
             .responseJSON(queue: networkQueue) { response in
-                print("\nResponse: \(NSString(data: response.data!, encoding: String.Encoding.utf8.rawValue)!)\n")
                 if (showProgress == true) {
                     DispatchQueue.main.async() {
                         RappleActivityIndicatorView.stopAnimation()

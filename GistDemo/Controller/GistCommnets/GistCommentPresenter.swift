@@ -16,8 +16,8 @@ class GistCommentPresenter {
         gistCommentView = view
     }
     
-    func getGistComments(gistId: String) {
-        provider.getGistComments(gistId: gistId, successHandler: { (response)  in
+    func getGistComments(gistId: String, showProgress:Bool) {
+        provider.getGistComments(gistId: gistId, showProgress:showProgress, successHandler: { (response)  in
             self.gistCommentView?.finishGetGistCommentsWithSuccess(gistComment: response)
         }, errorHandler: {(error) in
             self.gistCommentView?.finishGetGistCommentsWithError(error: error)

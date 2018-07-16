@@ -27,5 +27,19 @@ class CommentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configureCell(comment: GistComment) {
+        userNameLabel.text = comment.userName ?? ""
+        commentLabel.text = comment.comment ?? ""
+        commentDateLabel.text = comment.createdDate?.getCommentTime ?? ""
+        
+        
+        
+        if let imageUrl = comment.profileUrl {
+            userImageView.sd_setShowActivityIndicatorView(true)
+            userImageView.sd_setIndicatorStyle(.gray)
+            userImageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "profile"))
+        }
+    }
 
 }

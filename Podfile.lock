@@ -8,6 +8,7 @@ PODS:
     - ObjectMapper (~> 3.3)
   - BrightFutures (6.0.1):
     - Result (~> 3.2.4)
+  - IQKeyboardManager (6.0.4)
   - KeychainAccess (3.1.1)
   - ObjectMapper (3.3.0)
   - RappleProgressHUD (2.4.1)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - AlamofireOauth2
   - AlamofireObjectMapper
   - BrightFutures
+  - IQKeyboardManager
   - RappleProgressHUD
   - SDWebImage
 
@@ -28,12 +30,13 @@ SPEC CHECKSUMS:
   AlamofireOauth2: f3f58d52bdac4c0340181d32ae7d9eaa4c5ed84b
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   BrightFutures: 9c03dab79e73ffe504b7bafc15c5bfdaeee54890
+  IQKeyboardManager: 29514134ef0334a6fa33cf4eee11c36c064baeaf
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   RappleProgressHUD: 1d97178abc04ea9e89e4df74227064ded389ce24
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
 
-PODFILE CHECKSUM: 4e1416a318d10c793b7ddaa0b641cab0e8bd4a04
+PODFILE CHECKSUM: 1c3e295af164c57f349aefd16162d81ae58151da
 
 COCOAPODS: 1.4.0

@@ -27,10 +27,19 @@ class GistDemoTests: XCTestCase {
     }
     
     func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        let promise = expectation(description: "Get gist comments request test")
+        let provider:GistCommentProvider = GistCommentProvider()
+        provider.getGistComments(gistId: "d50e87b25637866b7c9daa9fdb3a7001", showProgress:true, successHandler: { (gistCommenttModel) in
+            XCTAssertTrue((gistCommenttModel?.data?.count)! > 0, "Test success")
+            promise.fulfill()
+        }, errorHandler: { (error) in
+            XCTAssertTrue(error.count == 0, "Error: \(error.description)")
+            promise.fulfill()
+        })
+        
+        self.waitForExpectations(timeout: 20, handler: { (error) in
+            
+        })
     }
     
 }

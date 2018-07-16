@@ -3,10 +3,10 @@ import Foundation
 import ObjectMapper
 
 class GistCommentProvider {
-    func getGistComments(gistId: String, successHandler: @escaping (_ response: GistCommentModel?) -> Void,
+    func getGistComments(gistId: String, showProgress:Bool, successHandler: @escaping (_ response: GistCommentModel?) -> Void,
                          errorHandler: @escaping (_ error: String) -> Void) {
         
-        NetworkManager.makeJSONObjectArrayRequest(GistDemoHttpRouter.getGistComment(gistId: gistId), message: Constant.processing(), showProgress: true)
+        NetworkManager.makeJSONObjectArrayRequest(GistDemoHttpRouter.getGistComment(gistId: gistId), message: Constant.processing(), showProgress: showProgress)
             .onSuccess { (response: [NSDictionary]) in
                 if response.count > 0 {
                     let gistJSON = ["data": response]

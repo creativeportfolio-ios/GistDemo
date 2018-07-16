@@ -10,7 +10,7 @@ class QRCodeScannerViewController: UIViewController {
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var alert: UIAlertController!
-    var gistId: String!
+    lazy var gistId: String = ""
     
     var presenter: QRCodeScannerPresenter = QRCodeScannerPresenter(provider: QRCodeScannerProvider())
     
@@ -161,7 +161,6 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                debugPrint("FOUND CODE \(String(describing: metadataObj.stringValue))")
                 self.captureSession?.stopRunning()
                 self.gistId = metadataObj.stringValue!
                 self.presenter.getGistDetail(gistId: metadataObj.stringValue!)

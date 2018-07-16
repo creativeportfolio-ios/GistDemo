@@ -6,6 +6,7 @@ import ObjectMapper
 public enum GistDemoHttpRouter: URLRequestConvertible {
     case getGistList(gistId: String)
     case getGistComment(gistId: String)
+    case postComment(gistId: String, comment: String)
     
     static var OAuthToken: String?
 
@@ -14,6 +15,8 @@ public enum GistDemoHttpRouter: URLRequestConvertible {
         case .getGistList,
              .getGistComment:
             return .get
+        case .postComment:
+            return .post
         }
     }
     
@@ -21,13 +24,16 @@ public enum GistDemoHttpRouter: URLRequestConvertible {
         switch self {
         case .getGistList(let gistId):
             return gistId
-        case .getGistComment(let gistId):
+        case .getGistComment(let gistId),
+             .postComment(let gistId, _):
             return "\(gistId)/comments"
         }
     }
     
     var jsonParameters: [String: Any]? {
         switch self {
+        case .postComment(_, let comment):
+            return ["body": comment]
         default:
             return nil
         }
@@ -42,6 +48,8 @@ public enum GistDemoHttpRouter: URLRequestConvertible {
     
     var isHeader: Bool {
         switch self {
+        case .postComment:
+            return true
         default:
             return false
         }
@@ -59,8 +67,16 @@ public enum GistDemoHttpRouter: URLRequestConvertible {
             }
         }
         
-        
         switch self {
+        case .postComment:
+            do {
+                let jsonData: NSData = try JSONSerialization.data(withJSONObject: self.jsonParameters ?? Dictionary(), options: JSONSerialization.WritingOptions.prettyPrinted) as NSData
+                print("JSON Request: \(NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue)! as String)")
+            }
+            catch let error as NSError {
+                print("Could not prepare request: \(error), \(error.userInfo)")
+            }
+            return try JSONEncoding.default.encode(urlRequest, with: self.jsonParameters)
         case .getGistList,
              .getGistComment:
             return try URLEncoding.queryString.encode(urlRequest, with: self.urlParameters)

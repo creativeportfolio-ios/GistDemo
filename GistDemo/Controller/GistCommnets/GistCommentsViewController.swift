@@ -9,7 +9,7 @@ class GistCommentsViewController: UIViewController {
     @IBOutlet weak var noCommentLabel: UILabel!
     
     var presenter: GistCommentPresenter = GistCommentPresenter(provider: GistCommentProvider())
-    var gistId: String?
+    lazy var gistId: String = ""
     var commentArray = [GistComment]()
     var refreshControl: UIRefreshControl!
 
@@ -19,7 +19,7 @@ class GistCommentsViewController: UIViewController {
         self.getComments()
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.white
-        refreshControl.addTarget(self, action: #selector(self.getComments), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.pullToRefresh), for: UIControlEvents.valueChanged)
         
         if #available(iOS 10.0, *) {
             self.commentTableView.refreshControl = refreshControl
@@ -35,40 +35,48 @@ class GistCommentsViewController: UIViewController {
     }
     
     @IBAction func postCommentClicked(_ sender: UIButton) {
-        //redirect to postComment
+        let postCommentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostCommentViewController") as! PostCommentViewController
+        postCommentViewController.gistId = self.gistId
+        postCommentViewController.delegate = self
+        self.navigationController?.pushViewController(postCommentViewController, animated: true)
     }
 }
-
-extension GistCommentsViewController : UITableViewDelegate, UITableViewDataSource {
+//MARK: UITableView DataSource
+extension GistCommentsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.commentArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as! CommentTableViewCell
-        let commment = self.commentArray[indexPath.row]
-        
-        cell.userNameLabel.text = commment.userName ?? ""
-        cell.commentLabel.text = commment.comment ?? ""
-        cell.commentDateLabel.text = commment.createdDate?.getCommentTime ?? ""
-        
-        cell.userImageView.sd_setShowActivityIndicatorView(true)
-        cell.userImageView.sd_setIndicatorStyle(.gray)
-        
-        if let imageUrl = commment.profileUrl {
-            cell.userImageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "profile"))
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as? CommentTableViewCell else {
+            return UITableViewCell()
         }
-        else {
-            cell.userImageView.image = UIImage(named: "profile")
-        }
+        cell.configureCell(comment: self.commentArray[indexPath.row])
         return cell
     }
 }
 
+//MARK: Custom Delegate
+extension GistCommentsViewController: PostCommentDelegate {
+    func postComment(userName: String, comment: String, imageUrl: String) {
+        let gistComment = GistComment()
+        gistComment?.comment = comment
+        gistComment?.createdDate = Date().getCurrentDateString()
+        gistComment?.profileUrl = imageUrl
+        gistComment?.userName = userName
+        self.commentArray.append(gistComment!)
+        self.commentTableView.reloadData()
+    }
+}
 
 extension GistCommentsViewController {
-    @objc func getComments() {
-        self.presenter.getGistComments(gistId: gistId ?? "")
+   
+    @objc func pullToRefresh() {
+        self.presenter.getGistComments(gistId: gistId, showProgress:false)
+    }
+    
+    func getComments(showProgress:Bool = true) {
+        self.presenter.getGistComments(gistId: gistId, showProgress:showProgress)
     }
     
     func openAlertView(message: String) {
@@ -81,8 +89,8 @@ extension GistCommentsViewController {
 extension GistCommentsViewController: GistCommentView {
     func finishGetGistCommentsWithSuccess(gistComment: GistCommentModel?) {
         self.refreshControl.endRefreshing()
-        if let _ = gistComment {
-            self.commentArray = (gistComment?.data!)!
+        if let commentList = gistComment?.data {
+            self.commentArray = commentList
             self.noCommentLabel.isHidden = true
             self.commentTableView.isHidden = false
             self.commentTableView.reloadData()
