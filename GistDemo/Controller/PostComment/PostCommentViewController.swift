@@ -40,7 +40,7 @@ class PostCommentViewController: UIViewController {
 
 extension PostCommentViewController {
     func isCommentValid() -> Bool {
-        if let comment = self.commentTextView.text, comment.count > 0, comment != commentPlaceHodler {
+        if commentTextView.text.trim().count > 0, commentTextView.text != commentPlaceHodler {
             return true
         }
         return false

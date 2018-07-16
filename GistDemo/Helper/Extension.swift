@@ -46,6 +46,10 @@ extension String {
             return "Few seconds ago"
         }
     }
+    
+    func trim() -> String {
+        return self.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+    }
 }
 
 extension Date {
