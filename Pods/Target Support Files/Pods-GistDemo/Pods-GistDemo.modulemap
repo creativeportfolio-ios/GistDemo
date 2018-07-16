@@ -1,0 +1,6 @@
+framework module Pods_GistDemo {
+  umbrella header "Pods-GistDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
