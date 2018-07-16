@@ -94,4 +94,56 @@ struct NetworkManager {
             
             return promise.future
     }
+    
+    static func makeJSONObjectArrayRequest(_ urlRequest: URLRequestConvertible, message: String, showProgress: Bool) -> Future<[NSDictionary], NetworkError> {
+        let promise = Promise<[NSDictionary], NetworkError>()
+        DispatchQueue.main.async() {
+            if (showProgress == true) {
+                let attributes = RappleActivityIndicatorView.attribute(style: RappleStyle.apple)
+                RappleActivityIndicatorView.startAnimatingWithLabel(message, attributes: attributes)
+            }
+        }
+        
+        let request = Alamofire.request(urlRequest)
+            .validate()
+            .responseJSON(queue: networkQueue) { response in
+                print("\nResponse: \(NSString(data: response.data!, encoding: String.Encoding.utf8.rawValue)!)\n")
+                if (showProgress == true) {
+                    DispatchQueue.main.async() {
+                        RappleActivityIndicatorView.stopAnimation()
+                    }
+                }
+                switch response.result {
+                    
+                case .success(let JSON):
+                    if let jsonObject = JSON as? [NSDictionary] {
+                        promise.success(jsonObject)
+                    }
+                    else {
+                        promise.failure(.other)
+                    }
+                    
+                case .failure
+                    where response.response?.statusCode == 401:
+                    promise.failure(.unauthorized)
+                    
+                case .failure
+                    where response.response?.statusCode == 403:
+                    promise.failure(.unauthorized)
+                    
+                case .failure
+                    where response.response?.statusCode == 404:
+                    promise.failure(.notFound)
+                    
+                case .failure
+                    where response.response?.statusCode == 500:
+                    promise.failure(.nonRecoverable)
+                    
+                case .failure:
+                    promise.failure(.other)
+                }
+        }
+        debugPrint(request)
+        return promise.future
+    }
 }

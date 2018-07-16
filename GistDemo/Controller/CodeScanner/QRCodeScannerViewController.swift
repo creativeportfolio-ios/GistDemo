@@ -174,7 +174,9 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
 extension QRCodeScannerViewController: QRCodeScannerView {
     
     func finishGetGistDetailWithSuccess() {
-        // Redirect to next screen
+        let gistCommentsViewController = self.storyboard?.instantiateViewController(withIdentifier: "GistCommentsViewController") as! GistCommentsViewController
+        gistCommentsViewController.gistId = self.gistId
+        self.navigationController?.pushViewController(gistCommentsViewController, animated: true)
     }
     
     func finishGetGistDetailWithError(error: String) {

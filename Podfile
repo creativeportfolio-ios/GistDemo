@@ -22,6 +22,7 @@ target 'GistDemo' do
     pod 'BrightFutures'
     pod 'RappleProgressHUD'
     pod 'AlamofireOauth2'
+    pod 'SDWebImage'
 
   target 'GistDemoTests' do
     inherit! :search_paths

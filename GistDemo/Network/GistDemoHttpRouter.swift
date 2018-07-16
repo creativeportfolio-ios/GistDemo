@@ -5,12 +5,14 @@ import ObjectMapper
 
 public enum GistDemoHttpRouter: URLRequestConvertible {
     case getGistList(gistId: String)
+    case getGistComment(gistId: String)
     
     static var OAuthToken: String?
 
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .getGistList:
+        case .getGistList,
+             .getGistComment:
             return .get
         }
     }
@@ -19,6 +21,8 @@ public enum GistDemoHttpRouter: URLRequestConvertible {
         switch self {
         case .getGistList(let gistId):
             return gistId
+        case .getGistComment(let gistId):
+            return "\(gistId)/comments"
         }
     }
     
@@ -57,7 +61,8 @@ public enum GistDemoHttpRouter: URLRequestConvertible {
         
         
         switch self {
-        case .getGistList:
+        case .getGistList,
+             .getGistComment:
             return try URLEncoding.queryString.encode(urlRequest, with: self.urlParameters)
         }
     }

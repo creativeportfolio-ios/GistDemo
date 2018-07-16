@@ -23,6 +23,13 @@
 		1814BBF320FC846E00C79D25 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBED20FC846E00C79D25 /* NetworkManager.swift */; };
 		1814BBF420FC846E00C79D25 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBEF20FC846E00C79D25 /* ErrorResponse.swift */; };
 		1814BBF620FC846E00C79D25 /* GistDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBF120FC846E00C79D25 /* GistDetailModel.swift */; };
+		1814BBFC20FC967E00C79D25 /* GistCommentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBF820FC967E00C79D25 /* GistCommentPresenter.swift */; };
+		1814BBFD20FC967E00C79D25 /* GistCommentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBF920FC967E00C79D25 /* GistCommentProvider.swift */; };
+		1814BBFE20FC967E00C79D25 /* GistCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBFA20FC967E00C79D25 /* GistCommentsViewController.swift */; };
+		1814BBFF20FC967E00C79D25 /* GistCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BBFB20FC967E00C79D25 /* GistCommentView.swift */; };
+		1814BC0220FC986E00C79D25 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BC0120FC986E00C79D25 /* CommentTableViewCell.swift */; };
+		1814BC0420FC993200C79D25 /* GistCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BC0320FC993200C79D25 /* GistCommentModel.swift */; };
+		1814BC0620FC9A5000C79D25 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814BC0520FC9A5000C79D25 /* Extension.swift */; };
 		4A7A18A0016B86368F245F86 /* Pods_GistDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0C39D10B930B6ED8CC9B14 /* Pods_GistDemoTests.framework */; };
 		C93C7315B81AA8983E93EC9B /* Pods_GistDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32DC6D5040616264661770D /* Pods_GistDemoUITests.framework */; };
 		FF27C3DDD45799728D55FE19 /* Pods_GistDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9059830893BEEDD7073D3F7A /* Pods_GistDemo.framework */; };
@@ -68,6 +75,13 @@
 		1814BBED20FC846E00C79D25 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1814BBEF20FC846E00C79D25 /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		1814BBF120FC846E00C79D25 /* GistDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistDetailModel.swift; sourceTree = "<group>"; };
+		1814BBF820FC967E00C79D25 /* GistCommentPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistCommentPresenter.swift; sourceTree = "<group>"; };
+		1814BBF920FC967E00C79D25 /* GistCommentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistCommentProvider.swift; sourceTree = "<group>"; };
+		1814BBFA20FC967E00C79D25 /* GistCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistCommentsViewController.swift; sourceTree = "<group>"; };
+		1814BBFB20FC967E00C79D25 /* GistCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistCommentView.swift; sourceTree = "<group>"; };
+		1814BC0120FC986E00C79D25 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		1814BC0320FC993200C79D25 /* GistCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistCommentModel.swift; sourceTree = "<group>"; };
+		1814BC0520FC9A5000C79D25 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		26102A4B702ECF1233E483E4 /* Pods-GistDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GistDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GistDemoUITests/Pods-GistDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0C39D10B930B6ED8CC9B14 /* Pods_GistDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GistDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AA3F8C2B041B7F87B31191 /* Pods-GistDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GistDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GistDemoUITests/Pods-GistDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,9 +146,10 @@
 		1814BBA920FC774800C79D25 /* GistDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1814BBDC20FC7F1F00C79D25 /* Helper */,
 				1814BBEE20FC846E00C79D25 /* Model */,
 				1814BBEB20FC846E00C79D25 /* Network */,
-				1814BBDC20FC7F1F00C79D25 /* Helper */,
+				1814BC0020FC986E00C79D25 /* Cell */,
 				1814BBD820FC7A8900C79D25 /* Controller */,
 				1814BBAA20FC774800C79D25 /* AppDelegate.swift */,
 				1814BBAE20FC774800C79D25 /* Main.storyboard */,
@@ -166,6 +181,7 @@
 		1814BBD820FC7A8900C79D25 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1814BBF720FC967E00C79D25 /* GistCommnets */,
 				1814BBD920FC7A8900C79D25 /* Login */,
 				1814BBE220FC835D00C79D25 /* CodeScanner */,
 			);
@@ -184,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				1814BBDD20FC7F1F00C79D25 /* Constant.swift */,
+				1814BC0520FC9A5000C79D25 /* Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -211,10 +228,30 @@
 		1814BBEE20FC846E00C79D25 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1814BC0320FC993200C79D25 /* GistCommentModel.swift */,
 				1814BBEF20FC846E00C79D25 /* ErrorResponse.swift */,
 				1814BBF120FC846E00C79D25 /* GistDetailModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1814BBF720FC967E00C79D25 /* GistCommnets */ = {
+			isa = PBXGroup;
+			children = (
+				1814BBF820FC967E00C79D25 /* GistCommentPresenter.swift */,
+				1814BBF920FC967E00C79D25 /* GistCommentProvider.swift */,
+				1814BBFA20FC967E00C79D25 /* GistCommentsViewController.swift */,
+				1814BBFB20FC967E00C79D25 /* GistCommentView.swift */,
+			);
+			path = GistCommnets;
+			sourceTree = "<group>";
+		};
+		1814BC0020FC986E00C79D25 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1814BC0120FC986E00C79D25 /* CommentTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		6FDD59973379D97277521B4A /* Frameworks */ = {
@@ -442,6 +479,7 @@
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RappleProgressHUD/RappleProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -453,6 +491,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RappleProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -547,10 +586,17 @@
 				1814BBF320FC846E00C79D25 /* NetworkManager.swift in Sources */,
 				1814BBF220FC846E00C79D25 /* GistDemoHttpRouter.swift in Sources */,
 				1814BBDB20FC7AA300C79D25 /* LoginViewController.swift in Sources */,
+				1814BBFC20FC967E00C79D25 /* GistCommentPresenter.swift in Sources */,
 				1814BBF620FC846E00C79D25 /* GistDetailModel.swift in Sources */,
 				1814BBAB20FC774800C79D25 /* AppDelegate.swift in Sources */,
+				1814BBFD20FC967E00C79D25 /* GistCommentProvider.swift in Sources */,
 				1814BBDE20FC7F1F00C79D25 /* Constant.swift in Sources */,
+				1814BC0420FC993200C79D25 /* GistCommentModel.swift in Sources */,
+				1814BC0620FC9A5000C79D25 /* Extension.swift in Sources */,
+				1814BBFE20FC967E00C79D25 /* GistCommentsViewController.swift in Sources */,
+				1814BBFF20FC967E00C79D25 /* GistCommentView.swift in Sources */,
 				1814BBF420FC846E00C79D25 /* ErrorResponse.swift in Sources */,
+				1814BC0220FC986E00C79D25 /* CommentTableViewCell.swift in Sources */,
 				1814BBEA20FC835E00C79D25 /* QRCodeScannerViewController.swift in Sources */,
 				1814BBE820FC835E00C79D25 /* QRCodeScannerProvider.swift in Sources */,
 				1814BBE720FC835E00C79D25 /* QRCodeScannerPresenter.swift in Sources */,
