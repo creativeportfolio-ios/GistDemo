@@ -292,7 +292,7 @@
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No comments posted." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIP-KO-iF7">
                                 <rect key="frame" x="97.5" y="323" width="180" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -322,7 +322,7 @@
         <!--Post Comment View Controller-->
         <scene sceneID="cT3-0b-DOL">
             <objects>
-                <viewController storyboardIdentifier="PostCommentViewController" id="Vu0-mr-gzp" customClass="PostCommentViewController" customModule="GistDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostCommentViewController" automaticallyAdjustsScrollViewInsets="NO" id="Vu0-mr-gzp" customClass="PostCommentViewController" customModule="GistDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a6b-iS-a7D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

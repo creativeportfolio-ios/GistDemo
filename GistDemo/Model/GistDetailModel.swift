@@ -10,7 +10,6 @@ class GistDetailModel: Mappable {
     required init?(map: Map) {
         
     }
-    
     // Mappable
     func mapping(map: Map) {
         url <- map["url"]

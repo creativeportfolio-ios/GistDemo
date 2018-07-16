@@ -41,6 +41,7 @@ class GistCommentsViewController: UIViewController {
         self.navigationController?.pushViewController(postCommentViewController, animated: true)
     }
 }
+
 //MARK: UITableView DataSource
 extension GistCommentsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,6 +66,7 @@ extension GistCommentsViewController: PostCommentDelegate {
         gistComment?.profileUrl = imageUrl
         gistComment?.userName = userName
         self.commentArray.append(gistComment!)
+        self.noCommentLabel.isHidden = true
         self.commentTableView.reloadData()
     }
 }
@@ -92,13 +94,11 @@ extension GistCommentsViewController: GistCommentView {
         if let commentList = gistComment?.data {
             self.commentArray = commentList
             self.noCommentLabel.isHidden = true
-            self.commentTableView.isHidden = false
-            self.commentTableView.reloadData()
         }
         else {
             self.noCommentLabel.isHidden = false
-            self.commentTableView.isHidden = true
         }
+        self.commentTableView.reloadData()
     }
     
     func finishGetGistCommentsWithError(error: String) {

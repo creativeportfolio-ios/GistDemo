@@ -20,7 +20,6 @@ class PostCommentViewController: UIViewController {
         commentTextView.text = commentPlaceHodler
         commentTextView.textColor = UIColor.darkGray
         commentTextView.delegate = self
-
         self.presenter.attachView(view: self)
     }
 

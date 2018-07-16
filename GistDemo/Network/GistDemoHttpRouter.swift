@@ -69,13 +69,6 @@ public enum GistDemoHttpRouter: URLRequestConvertible {
         
         switch self {
         case .postComment:
-            do {
-                let jsonData: NSData = try JSONSerialization.data(withJSONObject: self.jsonParameters ?? Dictionary(), options: JSONSerialization.WritingOptions.prettyPrinted) as NSData
-                print("JSON Request: \(NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue)! as String)")
-            }
-            catch let error as NSError {
-                print("Could not prepare request: \(error), \(error.userInfo)")
-            }
             return try JSONEncoding.default.encode(urlRequest, with: self.jsonParameters)
         case .getGistList,
              .getGistComment:

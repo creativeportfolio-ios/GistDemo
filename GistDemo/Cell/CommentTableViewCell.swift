@@ -19,21 +19,12 @@ class CommentTableViewCell: UITableViewCell {
             self.userImageView.layer.borderWidth = 1.0
             self.userImageView.clipsToBounds = true
         }
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configureCell(comment: GistComment) {
         userNameLabel.text = comment.userName ?? ""
         commentLabel.text = comment.comment ?? ""
         commentDateLabel.text = comment.createdDate?.getCommentTime ?? ""
-        
-        
         
         if let imageUrl = comment.profileUrl {
             userImageView.sd_setShowActivityIndicatorView(true)

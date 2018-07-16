@@ -57,14 +57,10 @@ extension QRCodeScannerViewController {
                 
                 do {
                     let input = try AVCaptureDeviceInput(device: captureDevice!)
-                    
                     self.captureSession = AVCaptureSession()
-                    
                     self.captureSession?.addInput(input)
-                    
                     let captureMetadataOutput = AVCaptureMetadataOutput()
                     self.captureSession?.addOutput(captureMetadataOutput)
-                    
                     captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                     captureMetadataOutput.metadataObjectTypes = self.supportedCodeTypes
                     
@@ -74,9 +70,8 @@ extension QRCodeScannerViewController {
                     self.scannerView.layer.addSublayer(self.videoPreviewLayer!)
                     
                     self.captureSession?.startRunning()
-                    
                     self.qrCodeFrameView = UIView()
-                    
+
                     if let qrCodeFrameView = self.qrCodeFrameView {
                         self.scannerView.addSubview(qrCodeFrameView)
                         self.scannerView.bringSubview(toFront: qrCodeFrameView)
@@ -93,14 +88,10 @@ extension QRCodeScannerViewController {
                             let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
                             do {
                                 let input = try AVCaptureDeviceInput(device: captureDevice!)
-                                
                                 self.captureSession = AVCaptureSession()
-                                
                                 self.captureSession?.addInput(input)
-                                
                                 let captureMetadataOutput = AVCaptureMetadataOutput()
                                 self.captureSession?.addOutput(captureMetadataOutput)
-                                
                                 captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                                 captureMetadataOutput.metadataObjectTypes = self.supportedCodeTypes
                                 
@@ -110,7 +101,6 @@ extension QRCodeScannerViewController {
                                 self.scannerView.layer.addSublayer(self.videoPreviewLayer!)
                                 
                                 self.captureSession?.startRunning()
-                                
                                 self.qrCodeFrameView = UIView()
                                 
                                 if let qrCodeFrameView = self.qrCodeFrameView {
@@ -180,6 +170,11 @@ extension QRCodeScannerViewController: QRCodeScannerView {
     
     func finishGetGistDetailWithError(error: String) {
         print(error)
-        self.getCamaraPermision()
+        self.alert = UIAlertController(title: Constant.alertTitle(), message: error, preferredStyle: UIAlertControllerStyle.alert)
+        self.alert.addAction(UIAlertAction(title: AlertTitle.Ok, style: UIAlertActionStyle.default, handler: { (completion) in
+            self.getCamaraPermision()
+        }))
+        self.present(self.alert, animated: true, completion: nil)
+        return
     }
 }

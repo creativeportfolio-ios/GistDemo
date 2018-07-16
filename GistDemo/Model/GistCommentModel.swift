@@ -9,11 +9,9 @@ class GistCommentModel: Mappable {
     required init?() {
         
     }
-    
     required init?(map: Map) {
         
     }
-    
     // Mappable
     func mapping(map: Map) {
         data <- map["data"]
@@ -30,11 +28,9 @@ class GistComment: Mappable {
     required init?(map: Map) {
         
     }
-    
     required init?() {
         
     }
-    
     // Mappable
     func mapping(map: Map) {
         comment <- map["body"]
